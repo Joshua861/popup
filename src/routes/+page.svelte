@@ -5,20 +5,26 @@
 	import Ad1 from './ad1.svelte';
 	import DisableAdblock from './disable-adblock.svelte';
 	import { onMount } from 'svelte';
+	import FlyUp from './fly-up.svelte';
+	import TopBanner from './top-banner.svelte';
+	import FlyDown from './fly-down.svelte';
+	import Newsletter from './newsletter.svelte';
 
 	onMount(() => {});
 
 	let showAd1 = false;
 	let showAdblock = false;
 	let showDisableAdblock = false;
+	let showTopBanner = false;
+	let showNewsletter = false;
 	setTimeout(() => {
 		showAdblock = true;
+		setTimeout(() => {
+			enableAd1();
+		}, 2000);
 	}, 2000);
 	const closeAdBlock = () => {
 		showAdblock = false;
-		setTimeout(() => {
-			showAd1 = true;
-		}, 2000);
 	};
 	const onDisableAdblock = () => {
 		closeAdBlock();
@@ -27,37 +33,53 @@
 	const closeDisableAdblock = () => {
 		showDisableAdblock = false;
 	};
+	const enableAd1 = () => {
+		showAd1 = true;
+		setTimeout(() => {
+			enableTopBanner();
+		}, 3000);
+	};
+	const enableTopBanner = () => {
+		showTopBanner = true;
+		setTimout(() => {
+			enableNewsletter();
+		}, 2000);
+	};
+	const closeTopBanner = () => {
+		showTopBanner = false;
+	};
+	const enableNewsletter = () => {
+		showNewsletter = true;
+	};
 </script>
 
+{#if showNewsletter}
+	<FlyUp>
+		<Newsletter />
+	</FlyUp>
+{/if}
+
 {#if showAdblock}
-	<Adblock id="adblock" close={closeAdBlock} more={onDisableAdblock} />
+	<FlyUp>
+		<Adblock id="adblock" close={closeAdBlock} more={onDisableAdblock} />
+	</FlyUp>
 {/if}
 {#if showDisableAdblock}
-	<DisableAdblock close={closeDisableAdblock} />
+	<FlyUp>
+		<DisableAdblock close={closeDisableAdblock} />
+	</FlyUp>
 {/if}
 {#if showAd1}
-	<Ad1 />
+	<FlyUp>
+		<Ad1 />
+	</FlyUp>
+{/if}
+{#if showTopBanner}
+	<FlyDown>
+		<TopBanner close={closeTopBanner} />
+	</FlyDown>
 {/if}
 <Navbar />
 <main>
 	<Article />
 </main>
-
-<style>
-	@keyframes fadeIn {
-		0% {
-			opacity: 0%;
-		}
-		100% {
-			opacity: 100%;
-		}
-	}
-	@keyframes fadeOut {
-		0% {
-			opacity: 100%;
-		}
-		100% {
-			opacity: 0%;
-		}
-	}
-</style>

@@ -1,7 +1,7 @@
 <script>
 	import { bounceIn } from 'svelte/easing';
 	import { scale } from 'svelte/transition';
-	let time = 5;
+	let time = 30;
 	let expired = false;
 	function countdown() {
 		if (expired == false) {

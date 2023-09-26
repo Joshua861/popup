@@ -1,5 +1,8 @@
 <script>
 	import Share from './share.svelte';
+	import Footer from './footer.svelte';
+	import Ad2 from './ad2.svelte';
+	import Thanks from './thanks.svelte';
 </script>
 
 <br />
@@ -32,6 +35,7 @@
 		varius ante. Fusce nunc tortor, consectetur ut leo quis, dapibus scelerisque enim. Fusce tempor
 		elit at dui rutrum, ut mattis metus porttitor.
 	</p>
+	<Ad2 />
 	<p>
 		Proin vitae lacinia diam, et rhoncus metus. Suspendisse vel mollis quam. Nam cursus sem nec
 		aliquet sodales. Quisque sit amet massa ornare, porta quam vitae, fringilla risus. Phasellus
@@ -78,4 +82,7 @@
 		Maecenas sed felis eget ligula pellentesque bibendum.
 	</p>
 	<Share />
+	<br />
+	<Thanks />
+	<Footer />
 </article>
