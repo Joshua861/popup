@@ -3,7 +3,7 @@
 	<ul>
 		<li>
 			<strong>
-				<a href="itsfoss.com">ItsFoss.com</a>:
+				<a href="https://itsfoss.com">ItsFoss.com</a>:
 			</strong> the inspiration for this project, thanks for having such an awful website.
 		</li>
 		<li>
